@@ -80,3 +80,107 @@
       display: block;
       border-radius: 4px;
     }
+    .section-with-image.reverse {
+      flex-direction: row-reverse;
+    }
+    .section-with-image h2 {
+      margin-top: 0;
+    }
+
+    /* Portraitbild "Das bin ich" rund */
+    .portrait-col img {
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    /* --- Collage: Bilder muessen bereits im richtigen Format zugeschnitten sein --- */
+    /* trau2.jpg: 1200 x 800 px (breit) */
+    /* trau1q.jpg und trau4q.jpg: 800 x 1200 px (hoch) */
+    .mosaic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 56px 0;
+    }
+    .mosaic-wide {
+      grid-column: 1 / span 2;
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+    .mosaic-portrait {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* Mobile: alles untereinander */
+    @media (max-width: 700px) {
+      .section-with-image,
+      .section-with-image.reverse {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .mosaic-grid {
+        grid-template-columns: 1fr;
+      }
+      .mosaic-wide {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="hero">
+      <img src="trauhero.jpg" alt="Freie Trauung in den Bergen" class="hero-image">
+    </div>
+
+    <h1>Feiert Eure Liebe!</h1>
+    <p class="intro">Freie Trauungen mit Silvia Hendricks</p>
+    <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - gefühlvoll, bewegend und ganz nah an Eurer Geschichte. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
+
+    <!-- Collage: Stimmungsbilder aus verschiedenen Zeremonien -->
+    <!-- Bilder VOR dem Hochladen zuschneiden: -->
+    <!-- trau2.jpg auf 1200x800 px, trau1q.jpg und trau4q.jpg auf 800x1200 px -->
+    <div class="mosaic-grid">
+      <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama" class="mosaic-wide">
+      <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar" class="mosaic-portrait">
+      <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen" class="mosaic-portrait">
+    </div>
+
+    <!-- Die Traurede: Text + Bild -->
+    <div class="section-with-image">
+      <div class="text-col">
+        <h2>Die Traurede</h2>
+        <p>Als Traurednerin entwickle ich mit Euch eine Zeremonie, die individuell auf Euch zugeschnitten ist und Eure Liebe strahlen lässt. Nach unserem ersten Kennenlernen folgen Fragebogen und Traugespräch. Idealerweise beziehe ich ausgewählte Freundinnen, Freunde oder Verwandte mit ein. So entsteht ein stimmiges Gesamtbild - das Fundament für einen bewegenden und feierlichen Auftakt Eurer Hochzeitsfeier.</p>
+      </div>
+      <div class="image-col">
+        <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
+      </div>
+    </div>
+
+    <!-- Das bin ich: Bild + Text, gespiegelt -->
+    <div class="section-with-image reverse">
+      <div class="text-col">
+        <h2>Das bin ich</h2>
+        <p>Ich lebe in München und bin Traurednerin im Nebenberuf - ein Talent, das ich im privaten Umfeld entdeckt habe und das auf meinem Handwerk als Kommunikationsprofi aufbaut. Ich interessiere mich für Menschen und ihre vielfältigen Lebensentwürfe, lasse mich von Büchern, Rockkonzerten und Pferden inspirieren - und liebe seit mehr als 20 Jahren meinen Mann und meinen Sohn.</p>
+      </div>
+      <div class="image-col portrait-col">
+        <img src="sil.jpg" alt="Portrait von Silvia Hendricks">
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2>Kontakt</h2>
+      <p>Mail</p>
+      <p>LinkedIn Instagram</p>
+    </div>
+
+  </div>
+</body>
+</html>
