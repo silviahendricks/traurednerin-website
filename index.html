@@ -77,8 +77,13 @@
     }
 
     /* --- Bild-Text-Bloecke: Bild oben, Text darunter --- */
+   /* --- Bild-Text-Bloecke: alles zentriert, gleiche Breite --- */
     .content-block {
       margin-top: 90px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
     .content-block h2 {
       margin-top: 0;
@@ -86,17 +91,20 @@
     }
     .content-block img {
       width: 100%;
-      max-width: 640px;
       aspect-ratio: 4 / 3;
       object-fit: cover;
       display: block;
       margin: 0 auto 32px auto;
       border-radius: 6px;
     }
+    .content-block p {
+      text-align: left;
+    }
     .content-block.portrait img {
       max-width: 260px;
       aspect-ratio: 1 / 1;
       border-radius: 50%;
+      margin: 0 auto 32px auto;
     }
 
     /* Mobile */
