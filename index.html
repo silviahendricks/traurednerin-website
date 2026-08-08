@@ -74,12 +74,7 @@
     .section-with-image .image-col {
       flex: 1;
     }
-    .section-with-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-    }
+    .section-with-image .image-col img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-radius: 4px; }
     .section-with-image.reverse {
       flex-direction: row-reverse;
     }
@@ -88,11 +83,7 @@
     }
 
     /* Portraitbild "Das bin ich" rund */
-    .portrait-col img {
-      border-radius: 50%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
+.portrait-col { flex: 0 0 300px; } .portrait-col img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; display: block; }
 
     /* --- Collage: 3 Bilder nebeneinander --- */
     .mosaic-grid {
@@ -111,7 +102,7 @@
 
     /* Mobile: alles untereinander */
     @media (max-width: 700px) {
-      .section-with-image,
+       .portrait-col { flex: 0 0 auto; } .portrait-col img { width: 220px; height: 220px; } .section-with-image,
       .section-with-image.reverse {
         flex-direction: column;
         gap: 20px;
