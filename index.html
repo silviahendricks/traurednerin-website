@@ -61,36 +61,12 @@
       border-top: 1px solid #d9d4cc;
     }
 
-    /* --- Bild-Text-Abschnitte --- */
-    .section-with-image {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      margin-top: 20px;
-    }
-    .section-with-image .text-col {
-      flex: 1.2;
-    }
-    .section-with-image .image-col {
-      flex: 1;
-    }
-   .section-with-image .image-col:not(.portrait-col) img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; border-radius: 4px; }
-    .section-with-image.reverse {
-      flex-direction: row-reverse;
-    }
-    .section-with-image h2 {
-      margin-top: 0;
-    }
-
-    /* Portraitbild "Das bin ich" rund */
-.portrait-col { flex: 0 0 300px; } .portrait-col img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; display: block; }
-
     /* --- Collage: 3 Bilder nebeneinander --- */
     .mosaic-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 12px;
-      margin: 56px 0;
+      margin: 56px 0 100px 0;
     }
     .mosaic-grid img {
       width: 100%;
@@ -100,18 +76,40 @@
       border-radius: 4px;
     }
 
-    /* Mobile: alles untereinander */
+    /* --- Bild-Text-Bloecke: Bild oben, Text darunter --- */
+    .content-block {
+      margin-top: 90px;
+    }
+    .content-block h2 {
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+    .content-block img {
+      width: 100%;
+      max-width: 640px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 32px auto;
+      border-radius: 6px;
+    }
+    .content-block.portrait img {
+      max-width: 260px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+    }
+
+    /* Mobile */
     @media (max-width: 700px) {
-       .portrait-col { flex: 0 0 auto; } .portrait-col img { width: 220px; height: 220px; } .section-with-image,
-      .section-with-image.reverse {
-        flex-direction: column;
-        gap: 20px;
-      }
       .mosaic-grid {
         grid-template-columns: 1fr;
+        margin: 40px 0 60px 0;
       }
       .mosaic-grid img {
         height: 260px;
+      }
+      .content-block {
+        margin-top: 60px;
       }
     }
   </style>
@@ -134,26 +132,18 @@
       <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
     </div>
 
-    <!-- Die Traurede: Text + Bild -->
-    <div class="section-with-image">
-      <div class="text-col">
-        <h2>Die Traurede</h2>
-        <p>Als Traurednerin entwickle ich mit Euch eine Zeremonie, die individuell auf Euch zugeschnitten ist und Eure Liebe strahlen lässt. Nach unserem ersten Kennenlernen folgen Fragebogen und Traugespräch. Idealerweise beziehe ich ausgewählte Freundinnen, Freunde oder Verwandte mit ein. So entsteht ein stimmiges Gesamtbild - das Fundament für einen bewegenden und feierlichen Auftakt Eurer Hochzeitsfeier.</p>
-      </div>
-      <div class="image-col">
-        <img src="trau5z.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
-      </div>
+    <!-- Die Traurede: Bild oben, Text darunter -->
+    <div class="content-block">
+      <h2>Die Traurede</h2>
+      <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
+      <p>Als Traurednerin entwickle ich mit Euch eine Zeremonie, die individuell auf Euch zugeschnitten ist und Eure Liebe strahlen lässt. Nach unserem ersten Kennenlernen folgen Fragebogen und Traugespräch. Idealerweise beziehe ich ausgewählte Freundinnen, Freunde oder Verwandte mit ein. So entsteht ein stimmiges Gesamtbild - das Fundament für einen bewegenden und feierlichen Auftakt Eurer Hochzeitsfeier.</p>
     </div>
 
-    <!-- Das bin ich: Bild + Text, gespiegelt -->
-    <div class="section-with-image reverse">
-      <div class="text-col">
-        <h2>Das bin ich</h2>
-        <p>Ich lebe in München und bin Traurednerin im Nebenberuf - ein Talent, das ich im privaten Umfeld entdeckt habe und das auf meinem Handwerk als Kommunikationsprofi aufbaut. Ich interessiere mich für Menschen und ihre vielfältigen Lebensentwürfe, lasse mich von Büchern, Rockkonzerten und Pferden inspirieren - und liebe seit mehr als 20 Jahren meinen Mann und meinen Sohn.</p>
-      </div>
-      <div class="image-col portrait-col">
-        <img src="sil.jpg" alt="Portrait von Silvia Hendricks">
-      </div>
+    <!-- Das bin ich: Portrait oben, Text darunter -->
+    <div class="content-block portrait">
+      <h2>Das bin ich</h2>
+      <img src="sil.jpg" alt="Portrait von Silvia Hendricks">
+      <p>Ich lebe in München und bin Traurednerin im Nebenberuf - ein Talent, das ich im privaten Umfeld entdeckt habe und das auf meinem Handwerk als Kommunikationsprofi aufbaut. Ich interessiere mich für Menschen und ihre vielfältigen Lebensentwürfe, lasse mich von Büchern, Rockkonzerten und Pferden inspirieren - und liebe seit mehr als 20 Jahren meinen Mann und meinen Sohn.</p>
     </div>
 
     <div class="contact">
