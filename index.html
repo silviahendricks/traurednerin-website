@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
-<link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap)" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
   <title>Silvia Hendricks - Traurednerin</title>
-
   <style>
     body {
       margin: 0;
@@ -16,86 +15,180 @@
       color: #545454;
       line-height: 1.8;
     }
-
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 24px 70px 24px;
     }
-
     .hero {
       margin-bottom: 36px;
     }
-
-   .hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-}
-
-h1 {
-  font-size: 3.2rem;
-  margin-top: 0;
-  margin-bottom: 18px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: #294035;
-  line-height: 1.15;
-}
-
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    h1 {
+      font-size: 3.2rem;
+      margin-top: 0;
+      margin-bottom: 18px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #294035;
+      line-height: 1.15;
+    }
     h2 {
       margin-top: 56px;
       font-size: 1.4rem;
       font-weight: 500;
       color: #294035;
     }
-
-   .intro {
-  font-size: 1.15rem;
-  margin-top: 0;
-  margin-bottom: 34px;
-  color: #545454;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-}
-
+    .intro {
+      font-size: 1.15rem;
+      margin-top: 0;
+      margin-bottom: 34px;
+      color: #545454;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
     p {
       margin-bottom: 20px;
       font-size: 1.05rem;
     }
-
     .contact {
       margin-top: 56px;
       padding-top: 24px;
       border-top: 1px solid #d9d4cc;
     }
+
+    /* --- Neue Styles fuer Bild-Text-Abschnitte --- */
+    .section-with-image {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+    .section-with-image .text-col {
+      flex: 1.2;
+    }
+    .section-with-image .image-col {
+      flex: 1;
+    }
+    .section-with-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+    }
+    .section-with-image.reverse {
+      flex-direction: row-reverse;
+    }
+    .section-with-image h2 {
+      margin-top: 0;
+    }
+
+    /* Portraitbild "Das bin ich" rund */
+    .portrait-col img {
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    /* --- Mosaik-Collage --- */
+    .mosaic-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+      margin: 56px 0;
+    }
+    .mosaic-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
+    .mosaic-wide {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .mosaic-tall {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+    }
+    .mosaic-bottom {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    /* Mobile: alles untereinander */
+    @media (max-width: 700px) {
+      .section-with-image,
+      .section-with-image.reverse {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .mosaic-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .mosaic-wide, .mosaic-tall, .mosaic-bottom {
+        grid-column: 1;
+        grid-row: auto;
+      }
+      .mosaic-grid img {
+        height: 260px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
+
     <div class="hero">
       <img src="trauhero.jpg" alt="Freie Trauung in den Bergen" class="hero-image">
     </div>
 
     <h1>Feiert Eure Liebe!</h1>
+    <p class="intro">Freie Trauungen mit Silvia Hendricks</p>
+    <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - gefühlvoll, bewegend und ganz nah an Eurer Geschichte. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
-<p class="intro">Freie Trauungen mit Silvia Hendricks</p>
+    <!-- Collage: Stimmungsbilder aus verschiedenen Zeremonien -->
+    <div class="mosaic-grid">
+      <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama" class="mosaic-wide">
+      <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen" class="mosaic-tall">
+      <img src="trau5z.jpg" alt="Trauzeremonie unter freiem Himmel mit Blumenbogen" class="mosaic-bottom">
+    </div>
 
-   <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - gefühlvoll, bewegend und ganz nah an Eurer Geschichte. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
+    <!-- Die Traurede: Text + Bild -->
+    <div class="section-with-image">
+      <div class="text-col">
+        <h2>Die Traurede</h2>
+        <p>Als Traurednerin entwickle ich mit Euch eine Zeremonie, die individuell auf Euch zugeschnitten ist und Eure Liebe strahlen lässt. Nach unserem ersten Kennenlernen folgen Fragebogen und Traugespräch. Idealerweise beziehe ich ausgewählte Freundinnen, Freunde oder Verwandte mit ein. So entsteht ein stimmiges Gesamtbild - das Fundament für einen bewegenden und feierlichen Auftakt Eurer Hochzeitsfeier.</p>
+      </div>
+      <div class="image-col">
+        <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
+      </div>
+    </div>
 
-<h2>Die Traurede</h2>
-<p>Als Traurednerin entwickle ich mit Euch eine Zeremonie, die individuell auf Euch zugeschnitten ist und Eure Liebe strahlen lässt. Nach unserem ersten Kennenlernen folgen Fragebogen und Traugespräch. Idealerweise beziehe ich ausgewählte Freundinnen, Freunde oder Verwandte mit ein. So entsteht ein stimmiges Gesamtbild - das Fundament für einen bewegenden und feierlichen Auftakt Eurer Hochzeitsfeier.</p>
-
-<h2>Das bin ich</h2>
-<p>Ich lebe in München und bin Traurednerin im Nebenberuf - ein Talent, das ich im privaten Umfeld entdeckt habe und das auf meinem Handwerk als Kommunikationsprofi aufbaut. Ich interessiere mich für Menschen und ihre vielfältigen Lebensentwürfe, lasse mich von Büchern, Rockkonzerten und Pferden inspirieren - und liebe seit mehr als 20 Jahren meinen Mann und meinen Sohn.</p>
+    <!-- Das bin ich: Bild + Text, gespiegelt -->
+    <div class="section-with-image reverse">
+      <div class="text-col">
+        <h2>Das bin ich</h2>
+        <p>Ich lebe in München und bin Traurednerin im Nebenberuf - ein Talent, das ich im privaten Umfeld entdeckt habe und das auf meinem Handwerk als Kommunikationsprofi aufbaut. Ich interessiere mich für Menschen und ihre vielfältigen Lebensentwürfe, lasse mich von Büchern, Rockkonzerten und Pferden inspirieren - und liebe seit mehr als 20 Jahren meinen Mann und meinen Sohn.</p>
+      </div>
+      <div class="image-col portrait-col">
+        <img src="sil.jpg" alt="Portrait von Silvia Hendricks">
+      </div>
+    </div>
 
     <div class="contact">
       <h2>Kontakt</h2>
       <p>Mail</p>
       <p>LinkedIn Instagram</p>
     </div>
+
   </div>
 </body>
 </html>
