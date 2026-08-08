@@ -76,13 +76,15 @@
       border-radius: 4px;
     }
 
-    /* --- Bild-Text-Bloecke: Bild oben, Text darunter --- */
-   /* --- Bild-Text-Bloecke: alles zentriert, gleiche Breite --- */
-    .content-block {
+   /* --- Bild-Text-Bloecke: nebeneinander, angeglichene Bildhoehen --- */
+    .content-row {
+      display: flex;
+      gap: 40px;
       margin-top: 90px;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
+      align-items: flex-start;
+    }
+    .content-block {
+      flex: 1;
       text-align: center;
     }
     .content-block h2 {
@@ -91,20 +93,20 @@
     }
     .content-block img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 260px;
       object-fit: cover;
       display: block;
-      margin: 0 auto 32px auto;
+      margin: 0 auto 24px auto;
       border-radius: 6px;
     }
     .content-block p {
       text-align: left;
     }
     .content-block.portrait img {
-      max-width: 260px;
-      aspect-ratio: 1 / 1;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
-      margin: 0 auto 32px auto;
+      margin: 0 auto 24px auto;
     }
 
     /* Mobile */
