@@ -94,25 +94,17 @@
       object-fit: cover;
     }
 
-    /* --- Collage: Bilder muessen bereits im richtigen Format zugeschnitten sein --- */
-    /* trau2.jpg: 1200 x 800 px (breit) */
-    /* trau1q.jpg und trau4q.jpg: 800 x 1200 px (hoch) */
+    /* --- Collage: 3 Bilder nebeneinander --- */
     .mosaic-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 12px;
       margin: 56px 0;
     }
-    .mosaic-wide {
-      grid-column: 1 / span 2;
+    .mosaic-grid img {
       width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-    }
-    .mosaic-portrait {
-      width: 100%;
-      height: auto;
+      height: 280px;
+      object-fit: cover;
       display: block;
       border-radius: 4px;
     }
@@ -127,8 +119,8 @@
       .mosaic-grid {
         grid-template-columns: 1fr;
       }
-      .mosaic-wide {
-        grid-column: 1;
+      .mosaic-grid img {
+        height: 260px;
       }
     }
   </style>
@@ -144,13 +136,11 @@
     <p class="intro">Freie Trauungen mit Silvia Hendricks</p>
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - gefühlvoll, bewegend und ganz nah an Eurer Geschichte. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
-    <!-- Collage: Stimmungsbilder aus verschiedenen Zeremonien -->
-    <!-- Bilder VOR dem Hochladen zuschneiden: -->
-    <!-- trau2.jpg auf 1200x800 px, trau1q.jpg und trau4q.jpg auf 800x1200 px -->
+    <!-- Collage: 3 Bilder nebeneinander -->
     <div class="mosaic-grid">
-      <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama" class="mosaic-wide">
-      <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar" class="mosaic-portrait">
-      <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen" class="mosaic-portrait">
+      <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
+      <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
+      <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
     </div>
 
     <!-- Die Traurede: Text + Bild -->
