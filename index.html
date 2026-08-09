@@ -132,7 +132,50 @@
       border-radius: 50%;
       margin: 0 auto 24px auto;
     }
-
+/* --- Impressum: dezenter Footer --- */
+    .site-footer {
+      margin-top: 40px;
+      padding-top: 18px;
+      border-top: 1px solid #ece8e0;
+    }
+    .site-footer summary {
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: #9a9690;
+      letter-spacing: 0.01em;
+      list-style: none;
+      display: inline-block;
+    }
+    .site-footer summary::-webkit-details-marker {
+      display: none;
+    }
+    .site-footer summary:hover {
+      color: #294035;
+    }
+    .site-footer summary::after {
+      content: "+";
+      margin-left: 6px;
+      font-weight: 400;
+    }
+    .site-footer[open] summary::after {
+      content: "–";
+    }
+    .impressum-content {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: #9a9690;
+      line-height: 1.7;
+    }
+    .impressum-content p {
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+    .impressum-content a {
+      color: #9a9690;
+    }
+    .impressum-content a:hover {
+      color: #294035;
+    }
     /* Mobile */
     @media (max-width: 700px) {
       .mosaic-grid {
@@ -194,7 +237,17 @@
     <a href="https://www.instagram.com/dein-profil" class="contact-button" target="_blank" rel="noopener">Instagram</a>
   </div>
 </div>
-
+<!-- Impressum: dezent, aufklappbar, ganz unten -->
+    <details class="site-footer">
+      <summary>Impressum</summary>
+      <div class="impressum-content">
+        <p>Angaben gemäß § 5 TMG</p>
+        <p>Silvia Hendricks</p>
+        <p>Oberföhringer Straße 196</p>
+        <p>81925 München</p>
+        <p>Kontakt: <a href="mailto:traureden@silvia-hendricks.de">traureden@silvia-hendricks.de</a></p>
+      </div>
+    </details>
   </div>
 </body>
 </html>
