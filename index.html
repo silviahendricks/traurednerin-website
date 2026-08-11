@@ -110,10 +110,11 @@
 
     /* --- Collage: 3 Bilder nebeneinander --- */
     .mosaic-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 12px;
-      margin: 56px 0 100px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin: 56px 0 100px 0;
+  will-change: transform;
     }
     .mosaic-grid img {
       width: 100%;
@@ -251,7 +252,7 @@
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - mit meiner Moderation und Traurede, die gefühlvoll und bewegend Eure Geschichte erzählen. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
     <!-- Collage: 3 Bilder nebeneinander -->
-    <div class="mosaic-grid">
+   <div class="mosaic-grid parallax-mosaic">
       <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
       <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
       <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
@@ -331,17 +332,28 @@
   </div>
     
     <script>
-  const parallaxImage = document.querySelector('.hero-image');
+  const heroImage = document.querySelector('.hero-image');
+  const mosaicGrid = document.querySelector('.parallax-mosaic');
 
   function updateParallax() {
-    if (!parallaxImage) return;
-
-    const rect = parallaxImage.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    if (rect.bottom > 0 && rect.top < windowHeight) {
-      const offset = (rect.top - windowHeight / 2) * -0.07;
-      parallaxImage.style.transform = `translateY(${offset}px)`;
+    if (heroImage) {
+      const rect = heroImage.getBoundingClientRect();
+
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const offset = (rect.top - windowHeight / 2) * -0.07;
+        heroImage.style.transform = `translateY(${offset}px)`;
+      }
+    }
+
+    if (mosaicGrid) {
+      const rect = mosaicGrid.getBoundingClientRect();
+
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const offset = (rect.top - windowHeight / 2) * -0.035;
+        mosaicGrid.style.transform = `translateY(${offset}px)`;
+      }
     }
   }
 
