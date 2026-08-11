@@ -354,7 +354,7 @@
     if (mosaicGrid) {
       const rect = mosaicGrid.getBoundingClientRect();
       if (rect.bottom > 0 && rect.top < windowHeight) {
-        targetMosaicOffset = (rect.top - windowHeight / 2) * -0.025;
+        targetMosaicOffset = (rect.top - windowHeight / 2) * -0.015;
       }
     }
 
@@ -365,8 +365,8 @@
   }
 
   function animateParallax() {
-    currentHeroOffset += (targetHeroOffset - currentHeroOffset) * 0.08;
-    currentMosaicOffset += (targetMosaicOffset - currentMosaicOffset) * 0.08;
+    currentHeroOffset += (targetHeroOffset - currentHeroOffset) * 0.05;
+    currentMosaicOffset += (targetMosaicOffset - currentMosaicOffset) * 0.05;
 
     if (heroImage) {
       heroImage.style.transform = `translateY(${currentHeroOffset}px)`;
