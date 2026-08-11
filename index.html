@@ -110,6 +110,17 @@
       gap: 12px;
       margin: 56px 0 100px 0;
     }
+    
+    .fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
     .mosaic-grid img {
   width: 100%;
   height: 280px;
@@ -246,7 +257,7 @@
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - mit meiner Moderation und Traurede, die gefühlvoll und bewegend Eure Geschichte erzählen. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
     <!-- Collage: 3 Bilder nebeneinander -->
-  <div class="mosaic-grid">
+  <div class="mosaic-grid fade-in-section">
   <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
   <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
   <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
@@ -324,5 +335,22 @@
   </div>
 </details>
   </div>
+    <script>
+  const fadeSection = document.querySelector('.fade-in-section');
+
+  function revealOnScroll() {
+    if (!fadeSection) return;
+
+    const rect = fadeSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight - 80) {
+      fadeSection.classList.add('visible');
+    }
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
 </body>
 </html>
