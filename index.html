@@ -117,12 +117,14 @@
   will-change: transform;
     }
     .mosaic-grid img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-      border-radius: 4px;
-    }
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
 
    /* --- Bild-Text-Bloecke: nebeneinander, angeglichene Bildhoehen --- */
   .content-row {
@@ -252,11 +254,11 @@
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - mit meiner Moderation und Traurede, die gefühlvoll und bewegend Eure Geschichte erzählen. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
     <!-- Collage: 3 Bilder nebeneinander -->
-   <div class="mosaic-grid parallax-mosaic">
-      <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
-      <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
-      <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
-    </div>
+  <div class="mosaic-grid">
+  <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar" class="mosaic-parallax mosaic-1">
+  <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama" class="mosaic-parallax mosaic-2">
+  <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen" class="mosaic-parallax mosaic-3">
+</div>
 
     <!-- Die Traurede: Bild oben, Text darunter -->
    <div class="content-row">
@@ -331,9 +333,11 @@
 </details>
   </div>
     
-    <script>
+   <script>
   const heroImage = document.querySelector('.hero-image');
-  const mosaicGrid = document.querySelector('.parallax-mosaic');
+  const mosaic1 = document.querySelector('.mosaic-1');
+  const mosaic2 = document.querySelector('.mosaic-2');
+  const mosaic3 = document.querySelector('.mosaic-3');
 
   function updateParallax() {
     const windowHeight = window.innerHeight;
@@ -347,12 +351,30 @@
       }
     }
 
-    if (mosaicGrid) {
-      const rect = mosaicGrid.getBoundingClientRect();
+    if (mosaic1) {
+      const rect = mosaic1.getBoundingClientRect();
 
       if (rect.bottom > 0 && rect.top < windowHeight) {
-        const offset = (rect.top - windowHeight / 2) * -0.035;
-        mosaicGrid.style.transform = `translateY(${offset}px)`;
+        const offset = (rect.top - windowHeight / 2) * -0.03;
+        mosaic1.style.transform = `translateY(${offset}px)`;
+      }
+    }
+
+    if (mosaic2) {
+      const rect = mosaic2.getBoundingClientRect();
+
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const offset = (rect.top - windowHeight / 2) * -0.06;
+        mosaic2.style.transform = `translateY(${offset}px)`;
+      }
+    }
+
+    if (mosaic3) {
+      const rect = mosaic3.getBoundingClientRect();
+
+      if (rect.bottom > 0 && rect.top < windowHeight) {
+        const offset = (rect.top - windowHeight / 2) * -0.04;
+        mosaic3.style.transform = `translateY(${offset}px)`;
       }
     }
   }
