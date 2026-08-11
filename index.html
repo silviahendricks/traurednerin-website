@@ -122,8 +122,6 @@
   object-fit: cover;
   display: block;
   border-radius: 4px;
-  will-change: transform;
-  transition: transform 0.08s linear;
 }
 
    /* --- Bild-Text-Bloecke: nebeneinander, angeglichene Bildhoehen --- */
@@ -254,10 +252,10 @@
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - mit meiner Moderation und Traurede, die gefühlvoll und bewegend Eure Geschichte erzählen. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
     <!-- Collage: 3 Bilder nebeneinander -->
-  <div class="mosaic-grid">
-  <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar" class="mosaic-parallax mosaic-1">
-  <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama" class="mosaic-parallax mosaic-2">
-  <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen" class="mosaic-parallax mosaic-3">
+  <div class="mosaic-grid parallax-mosaic">
+  <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
+  <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
+  <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
 </div>
 
     <!-- Die Traurede: Bild oben, Text darunter -->
@@ -333,55 +331,64 @@
 </details>
   </div>
     
-   <script>
+ <script>
   const heroImage = document.querySelector('.hero-image');
-  const mosaic1 = document.querySelector('.mosaic-1');
-  const mosaic2 = document.querySelector('.mosaic-2');
-  const mosaic3 = document.querySelector('.mosaic-3');
+  const mosaicGrid = document.querySelector('.parallax-mosaic');
 
-  function updateParallax() {
+  let currentHeroOffset = 0;
+  let targetHeroOffset = 0;
+  let currentMosaicOffset = 0;
+  let targetMosaicOffset = 0;
+  let ticking = false;
+
+  function calculateTargets() {
     const windowHeight = window.innerHeight;
 
     if (heroImage) {
       const rect = heroImage.getBoundingClientRect();
-
       if (rect.bottom > 0 && rect.top < windowHeight) {
-        const offset = (rect.top - windowHeight / 2) * -0.07;
-        heroImage.style.transform = `translateY(${offset}px)`;
+        targetHeroOffset = (rect.top - windowHeight / 2) * -0.07;
       }
     }
 
-    if (mosaic1) {
-      const rect = mosaic1.getBoundingClientRect();
-
+    if (mosaicGrid) {
+      const rect = mosaicGrid.getBoundingClientRect();
       if (rect.bottom > 0 && rect.top < windowHeight) {
-        const offset = (rect.top - windowHeight / 2) * -0.03;
-        mosaic1.style.transform = `translateY(${offset}px)`;
+        targetMosaicOffset = (rect.top - windowHeight / 2) * -0.025;
       }
     }
 
-    if (mosaic2) {
-      const rect = mosaic2.getBoundingClientRect();
-
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        const offset = (rect.top - windowHeight / 2) * -0.06;
-        mosaic2.style.transform = `translateY(${offset}px)`;
-      }
-    }
-
-    if (mosaic3) {
-      const rect = mosaic3.getBoundingClientRect();
-
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        const offset = (rect.top - windowHeight / 2) * -0.04;
-        mosaic3.style.transform = `translateY(${offset}px)`;
-      }
+    if (!ticking) {
+      requestAnimationFrame(animateParallax);
+      ticking = true;
     }
   }
 
-  window.addEventListener('scroll', updateParallax);
-  window.addEventListener('resize', updateParallax);
-  window.addEventListener('load', updateParallax);
+  function animateParallax() {
+    currentHeroOffset += (targetHeroOffset - currentHeroOffset) * 0.08;
+    currentMosaicOffset += (targetMosaicOffset - currentMosaicOffset) * 0.08;
+
+    if (heroImage) {
+      heroImage.style.transform = `translateY(${currentHeroOffset}px)`;
+    }
+
+    if (mosaicGrid) {
+      mosaicGrid.style.transform = `translateY(${currentMosaicOffset}px)`;
+    }
+
+    const heroStillMoving = Math.abs(targetHeroOffset - currentHeroOffset) > 0.1;
+    const mosaicStillMoving = Math.abs(targetMosaicOffset - currentMosaicOffset) > 0.1;
+
+    if (heroStillMoving || mosaicStillMoving) {
+      requestAnimationFrame(animateParallax);
+    } else {
+      ticking = false;
+    }
+  }
+
+  window.addEventListener('scroll', calculateTargets);
+  window.addEventListener('resize', calculateTargets);
+  window.addEventListener('load', calculateTargets);
 </script>
 </body>
 </html>
