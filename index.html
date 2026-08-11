@@ -38,13 +38,19 @@
       margin: 0 auto;
       padding: 0 24px 70px 24px;
     }
-    .hero {
-      margin-bottom: 36px;
-    }
-    .hero-image {
-      width: 100%;
-      height: auto;
-      display: block;
+   .hero {
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  will-change: transform;
+  transition: transform 0.08s linear;
+}
+
     }
     h1 {
       font-size: 3.2rem;
@@ -323,5 +329,25 @@
   </div>
 </details>
   </div>
+    
+    <script>
+  const parallaxImage = document.querySelector('.hero-image');
+
+  function updateParallax() {
+    if (!parallaxImage) return;
+
+    const rect = parallaxImage.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.bottom > 0 && rect.top < windowHeight) {
+      const offset = (rect.top - windowHeight / 2) * -0.04;
+      parallaxImage.style.transform = `translateY(${offset}px)`;
+    }
+  }
+
+  window.addEventListener('scroll', updateParallax);
+  window.addEventListener('resize', updateParallax);
+  window.addEventListener('load', updateParallax);
+</script>
 </body>
 </html>
