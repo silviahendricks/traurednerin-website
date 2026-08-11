@@ -38,20 +38,15 @@
       margin: 0 auto;
       padding: 0 24px 70px 24px;
     }
-   .hero {
-  margin-bottom: 36px;
-  overflow: hidden;
-}
-
-.hero-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  will-change: transform;
-  transition: transform 0.08s linear;
-}
-
+       .hero {
+      margin-bottom: 36px;
     }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }    }
     h1 {
       font-size: 3.2rem;
       margin-top: 0;
@@ -109,12 +104,11 @@
     }
 
     /* --- Collage: 3 Bilder nebeneinander --- */
-    .mosaic-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin: 56px 0 100px 0;
-  will-change: transform;
+       .mosaic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 56px 0 100px 0;
     }
     .mosaic-grid img {
   width: 100%;
@@ -252,7 +246,7 @@
     <p>Eine freie Trauung schenkt Euch den Raum, Eure Liebe in Eurem persönlichen Stil zu feiern - mit meiner Moderation und Traurede, die gefühlvoll und bewegend Eure Geschichte erzählen. Gemeinsam gestalten wir einen Moment, der wirklich zu Euch passt und lange in Erinnerung bleibt.</p>
 
     <!-- Collage: 3 Bilder nebeneinander -->
-  <div class="mosaic-grid parallax-mosaic">
+  <div class="mosaic-grid">
   <img src="trau1q.jpg" alt="Silvia Hendricks haelt die Traurede neben dem Brautpaar">
   <img src="trau2.jpg" alt="Trauzeremonie mit Gästen vor Bergpanorama">
   <img src="trau4q.jpg" alt="Brautstrauss aus weissen Blumen">
@@ -330,65 +324,5 @@
   </div>
 </details>
   </div>
-    
- <script>
-  const heroImage = document.querySelector('.hero-image');
-  const mosaicGrid = document.querySelector('.parallax-mosaic');
-
-  let currentHeroOffset = 0;
-  let targetHeroOffset = 0;
-  let currentMosaicOffset = 0;
-  let targetMosaicOffset = 0;
-  let ticking = false;
-
-  function calculateTargets() {
-    const windowHeight = window.innerHeight;
-
-    if (heroImage) {
-      const rect = heroImage.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        targetHeroOffset = (rect.top - windowHeight / 2) * -0.07;
-      }
-    }
-
-    if (mosaicGrid) {
-      const rect = mosaicGrid.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < windowHeight) {
-        targetMosaicOffset = (rect.top - windowHeight / 2) * -0.015;
-      }
-    }
-
-    if (!ticking) {
-      requestAnimationFrame(animateParallax);
-      ticking = true;
-    }
-  }
-
-  function animateParallax() {
-    currentHeroOffset += (targetHeroOffset - currentHeroOffset) * 0.05;
-    currentMosaicOffset += (targetMosaicOffset - currentMosaicOffset) * 0.05;
-
-    if (heroImage) {
-      heroImage.style.transform = `translateY(${currentHeroOffset}px)`;
-    }
-
-    if (mosaicGrid) {
-      mosaicGrid.style.transform = `translateY(${currentMosaicOffset}px)`;
-    }
-
-    const heroStillMoving = Math.abs(targetHeroOffset - currentHeroOffset) > 0.1;
-    const mosaicStillMoving = Math.abs(targetMosaicOffset - currentMosaicOffset) > 0.1;
-
-    if (heroStillMoving || mosaicStillMoving) {
-      requestAnimationFrame(animateParallax);
-    } else {
-      ticking = false;
-    }
-  }
-
-  window.addEventListener('scroll', calculateTargets);
-  window.addEventListener('resize', calculateTargets);
-  window.addEventListener('load', calculateTargets);
-</script>
 </body>
 </html>
