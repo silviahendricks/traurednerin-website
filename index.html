@@ -335,18 +335,19 @@
   </div>
 </details>
   </div>
-    <script>
-  const fadeSection = document.querySelector('.fade-in-section');
+   <script>
+  const fadeSections = document.querySelectorAll('.fade-in-section');
 
   function revealOnScroll() {
-    if (!fadeSection) return;
-
-    const rect = fadeSection.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    if (rect.top < windowHeight - 80) {
-      fadeSection.classList.add('visible');
-    }
+    fadeSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.top < windowHeight - 80) {
+        section.classList.add('visible');
+      }
+    });
   }
 
   window.addEventListener('scroll', revealOnScroll);
