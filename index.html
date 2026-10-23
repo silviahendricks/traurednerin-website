@@ -257,7 +257,7 @@
       display: flex;
       gap: 40px;
       margin-top: 90px;
-      align-items: flex-start;
+      align-items: stretch;
     }
     .video-block {
       flex: 1;
@@ -305,7 +305,14 @@
         flex-direction: column;
         gap: 50px;
         margin-top: 60px;
-    }
+      }
+		.video-block {
+        width: 100%;
+        flex: none;
+      }
+      .video-embed {
+        width: 100%;
+      }
   </style>
 </head>
 
@@ -355,6 +362,7 @@
                   allowfullscreen></iframe>
         </div>
       </div>
+	</div>
 
       <div class="video-block">
         <h3>Bergliebe</h3>
